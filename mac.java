@@ -55,7 +55,7 @@ public class mac extends Thread {
 		catch (AWTException e) {
 			e.printStackTrace();
 		}
-		System.out.println("SR: " + resets + " |\tcolore: " + suicuneColor);
+		System.out.println("SR: " + resets + " |\tcolor: " + suicuneColor);
 		if ("java.awt.Color[r=128,g=152,b=192]".equals(suicuneColor)) return true;
 		else return false;
 	}
