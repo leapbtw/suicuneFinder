@@ -1,6 +1,6 @@
 # suicuneFinder
 
-this is a java program that allows you to automatically soft reset you Pokemon Crystal game to look for a shiny suicune
+this is a java program that allows you to automatically soft reset your Pokemon Crystal game to look for a shiny suicune
 
 # COMPATIBILITY
 
