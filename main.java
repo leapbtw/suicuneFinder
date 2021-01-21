@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
- * @author macintoshhd
+ * @author leapbtw
  */
 
 import java.awt.*;
@@ -18,13 +13,12 @@ public class main {
 		String OS = System.getProperty("os.name");
 		switch (OS) {
 			case "Mac OS X":
-				JOptionPane.showMessageDialog(null, "sei su un mac");
+				JOptionPane.showMessageDialog(null, "macOS machine detected");
 				break;
 			case "Windows 10":
-				JOptionPane.showMessageDialog(null, "sei su windows");
+				JOptionPane.showMessageDialog(null, "Windows 10 machine detected");
 				break;
 		}
-		//(new turbo()).start();
 		(new mac()).start();
 	}
 	
