@@ -43,7 +43,7 @@ public class mac extends Thread {
 		catch (AWTException e) {
 			e.printStackTrace();
 		}
-		JOptionPane.showMessageDialog(null, "SHINY FOUND after " + resets + "resets!");
+		JOptionPane.showMessageDialog(null, "SHINY FOUND after " + resets + " resets!");
 	}
 	
 	public boolean isShiny (int resets) {
