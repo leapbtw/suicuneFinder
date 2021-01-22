@@ -16,3 +16,9 @@ this is a java program that allows you to automatically soft reset your Pokemon 
 2) when runned, the program will open the CMD + TAB menu: select VBA (you have to run it on full screen)
 3) wait! it's gonna take a while, it's 1/8192 chance!
 4) done! it will stop resetting and it will tell you how many resets it has done to find it. Good Luck :D
+
+
+# future updates
+
+now since i am having fun coding this software, i am continuing to update it, if you encounter any bug, want to leave a feedback or maybe suggest something, my discord is L3Ap#6751, DM me there
+right now i'm currently working on supporting more screen sizes on macOS, but i will shortly start working on supporting the catch of different pokemons, like the Jhoto starters and other legendaries, so stay tuned :3
