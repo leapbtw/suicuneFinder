@@ -4,8 +4,10 @@ this is a java program that allows you to automatically soft reset your Pokemon 
 
 # COMPATIBILITY
 
-> as far as the 1.0 release goes, it is only compatible with macOS machines, with a screen size of 1280x800: if you manually change the pixels coordinates of line 53 of mac.java you can adjust the program to run on a macOS machine with a different screen size (you may have to adjust the RGB color too)
-> 
+> * on the 1.1 release we have big news! i finally support windows on 1080p and 720p! you can even adjust it for your custom screen resolution, BUT I'M NOT SURE IF IT WORKS
+>
+> * macOS is only supported at 1280x800 right now
+>
 > this is only compatible with visualboyadvance-m
 
 # HOW TO USE
