@@ -85,7 +85,7 @@ public class win extends Thread {
 		catch (AWTException e) {
 		    e.printStackTrace();
 		}
-		System.out.println("SR: " + resets + " |\tcolor: " + suicuneColor);
+		System.out.println("SR: " + resets + " |\t coord:" + shinyX + "," + shinyY + "\tcolor: " + suicuneColor);
 		if ("java.awt.Color[r=128,g=152,b=192]".equals(suicuneColor) || "java.awt.Color[r=200,g=192,b=248]".equals(suicuneColor)) return true;
 		else return false;
 	}
