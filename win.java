@@ -9,7 +9,6 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class win extends Thread {
-	static boolean keepRunning = true;
 	int x, y;
 	int resets = 0;
 	String choosedPokemon;
@@ -43,35 +42,33 @@ public class win extends Thread {
 			case "celebi":
 				celebi();
 				break;
-			case "cyndaquil":
-				cyndaquil();
+			case "starter":
+				starter();
 				break;
 		}
 	}
 	
 	public void suicune() {
 		try {
-			while(keepRunning == true) {
-				Robot r = new Robot();
-				while (isSuicuneShiny(resets, x, y) == false) {
-					//softreset
-					r.keyPress(KeyEvent.VK_C);
+			Robot r = new Robot();
+			while (isSuicuneShiny(resets, x, y) == false) {
+				//softreset
+				r.keyPress(KeyEvent.VK_C);
+				r.delay(50);
+				r.keyRelease(KeyEvent.VK_C);
+				resets++;
+				//skip parte iniziale
+				for (int i = 0; i < 16; i++) {
+					r.delay(200);
+					r.keyPress(KeyEvent.VK_X);
 					r.delay(50);
-					r.keyRelease(KeyEvent.VK_C);
-					resets++;
-					//skip parte iniziale
-					for (int i = 0; i < 16; i++) {
-						r.delay(200);
-						r.keyPress(KeyEvent.VK_X);
-						r.delay(50);
-						r.keyRelease(KeyEvent.VK_X);
-					}
-					//premo SU - inizio la scena di suicune
-					r.keyPress(KeyEvent.VK_W);
-					r.delay(50);
-					r.keyRelease(KeyEvent.VK_W);
-					r.delay(7300);
+					r.keyRelease(KeyEvent.VK_X);
 				}
+				//premo SU - inizio la scena di suicune
+				r.keyPress(KeyEvent.VK_W);
+				r.delay(50);
+				r.keyRelease(KeyEvent.VK_W);
+				r.delay(7300);
 			}
 		} catch (AWTException e) {}
 		JOptionPane.showMessageDialog(null, "SHINY FOUND after " + resets + " resets!");
@@ -110,23 +107,21 @@ public class win extends Thread {
 	
 	public void celebi() {
 		try {
-			while (keepRunning == true) {
 			Robot r = new Robot();
-				while (isCelebiShiny(resets, x, y) == false) {
-					//softreset
-					r.keyPress(KeyEvent.VK_C);
+			while (isCelebiShiny(resets, x, y) == false) {
+				//softreset
+				r.keyPress(KeyEvent.VK_C);
+				r.delay(50);
+				r.keyRelease(KeyEvent.VK_C);
+				resets++;
+				//skip parte iniziale
+				for (int i = 0; i < 30; i++) {
+					r.delay(200);
+					r.keyPress(KeyEvent.VK_X);
 					r.delay(50);
-					r.keyRelease(KeyEvent.VK_C);
-					resets++;
-					//skip parte iniziale
-					for (int i = 0; i < 30; i++) {
-						r.delay(200);
-						r.keyPress(KeyEvent.VK_X);
-						r.delay(50);
-						r.keyRelease(KeyEvent.VK_X);
-					}
-					r.delay(7100);
+					r.keyRelease(KeyEvent.VK_X);
 				}
+				r.delay(7100);
 			}
 		}
 		catch (AWTException e) {}
@@ -150,8 +145,8 @@ public class win extends Thread {
 			}
 			break;
 		default:
-		    shinyX = (int) (x * 0.6953125);
-		    shinyY = (int) (y * 0.1);
+		    shinyX = (int) (x * 0.63541666);
+		    shinyY = (int) (y * 0.338888);
 			break;
 	    }
 		try {
@@ -164,35 +159,74 @@ public class win extends Thread {
 		else return false;
 	}
 	
-	public void cyndaquil() {
+	public void starter() {
 		try {
-			while (keepRunning == true) {
-				Robot r = new Robot();
-				while (isCelebiShiny(resets, x, y) == false) {
-					//softreset
-					r.keyPress(KeyEvent.VK_C);
+			Robot r = new Robot();
+			while (isStarterShiny(resets, x, y) == false) {
+				//softreset
+				r.keyPress(KeyEvent.VK_C);
+				r.delay(50);
+				r.keyRelease(KeyEvent.VK_C);
+				resets++;
+				//skip parte iniziale
+				for (int i = 0; i < 41; i++) {
+					r.delay(150);
+					r.keyPress(KeyEvent.VK_X);
 					r.delay(50);
-					r.keyRelease(KeyEvent.VK_C);
-					resets++;
-					//skip parte iniziale
-					for (int i = 0; i < 41; i++) {
-						r.delay(150);
-						r.keyPress(KeyEvent.VK_X);
-						r.delay(50);
-						r.keyRelease(KeyEvent.VK_X);
-					}
-					for (int i = 0; i < 41; i++) {
-						r.delay(150);
-						r.keyPress(KeyEvent.VK_Z);
-						r.delay(50);
-						r.keyRelease(KeyEvent.VK_Z);
-					}
-					r.delay(6000);
+					r.keyRelease(KeyEvent.VK_X);
 				}
+				for (int i = 0; i < 50; i++) {
+					r.delay(150);
+					r.keyPress(KeyEvent.VK_Z);
+					r.delay(50);
+					r.keyRelease(KeyEvent.VK_Z);
+				}
+				r.delay(300);
+				r.keyPress(KeyEvent.VK_ENTER);
+				r.delay(150);
+				r.keyRelease(KeyEvent.VK_ENTER);
+				for (int i = 0; i < 3; i++) {
+					r.delay(550);
+					r.keyPress(KeyEvent.VK_X);
+					r.delay(50);
+					r.keyRelease(KeyEvent.VK_X);
+				}
+				r.delay(5000);
 			}
+			
 		}
 		catch (AWTException e) {}
 		JOptionPane.showMessageDialog(null, "SHINY FOUND after " + resets + " resets!");
-		
+	}
+	
+	public boolean isStarterShiny (int resets, int x, int y) {
+	    int shinyX = 0, shinyY = 0;
+		String starterColor = "";
+	    switch (y) {
+		case 1080:
+		    if (x == 1920) {
+				shinyX = 1490;
+				shinyY = 88;
+		    }
+		    break;
+		case 720:
+			if (x == 1280) {
+				shinyX = 982;
+				shinyY = 72;
+			}
+			break;
+		default:
+		    shinyX = (int) (x * 0.77604166);
+		    shinyY = (int) (y * 0.08148148);
+			break;
+	    }
+		try {
+		    Robot r2 = new Robot();
+		    starterColor = r2.getPixelColor(shinyX, shinyY).toString(); 
+		}
+		catch (AWTException e) {}
+		System.out.println("SR: " + resets + " |\t coord:" + shinyX + "," + shinyY + "\tcolor: " + starterColor);
+		if ("java.awt.Color[r=0,g=0,b=0]".equals(starterColor)) return true;
+		else return false;
 	}
 }

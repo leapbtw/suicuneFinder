@@ -39,6 +39,9 @@ public class mac extends Thread {
 			case "celebi":
 				celebi();
 				break;
+			case "starter":
+				starter();
+				break;
 		}
 	}
 	
@@ -72,21 +75,21 @@ public class mac extends Thread {
 	public boolean isSuicuneShiny (int resets, int x, int y) {
 	    int shinyX = 0, shinyY = 0;
 	    switch (y) {
-		case 800:
-		    if (x == 1280) {
-			shinyX = 890;
-			shinyY = 80;
-		    }
-			break;
 		case 1080:
 		    if (x == 1920) {
 			shinyX = 1280;
 			shinyY = 178;
 		    }
 		    break;
+		case 800:
+		    if (x == 1280) {
+			shinyX = 890;
+			shinyY = 80;
+		    }
+			break;
 		default:
-		    shinyX = (int) (x * 0.6953125);
-		    shinyY = (int) (y * 0.1);
+		    shinyX = (int) (x * 0.666666);
+		    shinyY = (int) (y * 0.1648148);
 			break;
 	    }
 		
@@ -131,8 +134,8 @@ public class mac extends Thread {
 	    switch (y) {
 		case 1080:
 		    if (x == 1920) {
-				shinyX = 1220;
-				shinyY = 366;
+				shinyX = 1240;
+				shinyY = 350;
 		    }
 		    break;
 		case 800:
@@ -142,8 +145,8 @@ public class mac extends Thread {
 			}
 			break;
 		default:
-		    shinyX = (int) (x * 0.6953125);
-		    shinyY = (int) (y * 0.1);
+		    shinyX = (int) (x * 0.64583333);
+		    shinyY = (int) (y * 0.32407407);
 			break;
 	    }
 		try {
@@ -152,7 +155,78 @@ public class mac extends Thread {
 		}
 		catch (AWTException e) {}
 		System.out.println("SR: " + resets + " |\t coord:" + shinyX + "," + shinyY + "\tcolor: " + celebiColor);
-		if ("java.awt.Color[r=248,g=120,b=120]".equals(celebiColor)) return true;
+		if ("java.awt.Color[r=255,g=122,b=129]".equals(celebiColor) || "java.awt.Color[r=248,g=120,b=120]".equals(celebiColor)) return true;
+		else return false;
+	}
+	
+	public void starter() {
+		try {
+			Robot r = new Robot();
+			while (isStarterShiny(resets, x, y) == false) {
+				//softreset
+				r.keyPress(KeyEvent.VK_C);
+				r.delay(50);
+				r.keyRelease(KeyEvent.VK_C);
+				resets++;
+				//skip parte iniziale
+				for (int i = 0; i < 41; i++) {
+					r.delay(150);
+					r.keyPress(KeyEvent.VK_X);
+					r.delay(50);
+					r.keyRelease(KeyEvent.VK_X);
+				}
+				for (int i = 0; i < 55; i++) {
+					r.delay(150);
+					r.keyPress(KeyEvent.VK_Z);
+					r.delay(50);
+					r.keyRelease(KeyEvent.VK_Z);
+				}
+				r.keyPress(KeyEvent.VK_B);
+				r.delay(150);
+				r.keyRelease(KeyEvent.VK_B);
+				r.delay(400);
+				for (int i = 0; i < 3; i++) {
+					r.delay(550);
+					r.keyPress(KeyEvent.VK_X);
+					r.delay(50);
+					r.keyRelease(KeyEvent.VK_X);
+				}
+				r.delay(5000);
+			}
+			
+		}
+		catch (AWTException e) {}
+		JOptionPane.showMessageDialog(null, "SHINY FOUND after " + resets + " resets!");
+	}
+	
+	public boolean isStarterShiny (int resets, int x, int y) {
+	    int shinyX = 0, shinyY = 0;
+		String starterColor = "";
+	    switch (y) {
+		case 1080:
+		    if (x == 1920) {
+				shinyX = 1526;
+				shinyY = 49;
+		    }
+		    break;
+		case 800:
+			if (x == 1280) {
+				shinyX = 1045;
+				shinyY = 34;
+			}
+			break;
+		default:
+		    shinyX = (int) (x * 0.79479166);
+		    shinyY = (int) (y * 0.045370);
+			break;
+	    }
+		try {
+		    Robot r2 = new Robot();
+		    starterColor = r2.getPixelColor(shinyX, shinyY).toString(); 
+		}
+		catch (AWTException e) {}
+		System.out.println("SR: " + resets + " |\t coord:" + shinyX + "," + shinyY + "\tcolor: " + starterColor);
+		if ("java.awt.Color[r=0,g=0,b=0]".equals(starterColor) || "java.awt.Color[r=1,g=1,b=1]".equals(starterColor)) return true;
 		else return false;
 	}
 }
